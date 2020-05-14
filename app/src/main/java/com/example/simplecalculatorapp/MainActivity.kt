@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.NumberFormatException
 
@@ -15,9 +13,9 @@ private const val STATE_OPERAND1 = "Operand1"
 private const val STATE_OPERAND1_STORED = "Operand1_Stored"
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var result: EditText
-    private lateinit var newNumber: EditText
-    private val displayOperation by lazy(LazyThreadSafetyMode.NONE) { findViewById<TextView>(R.id.operation) }
+//    private lateinit var result: EditText
+//    private lateinit var newNumber: EditText
+//    private val displayOperation by lazy(LazyThreadSafetyMode.NONE) { findViewById<TextView>(R.id.operation) }
 
     //Variables untuk menanganin operand dan tipe kalkulasi
     private var operand1: Double? = null
@@ -27,28 +25,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        result = findViewById(R.id.result)
-        newNumber = findViewById(R.id.newNumber)
-
-        //Data input button
-        val button0: Button = findViewById(R.id.button0)
-        val button1: Button = findViewById(R.id.button1)
-        val button2: Button = findViewById(R.id.button2)
-        val button3: Button = findViewById(R.id.button3)
-        val button4: Button = findViewById(R.id.button4)
-        val button5: Button = findViewById(R.id.button5)
-        val button6: Button = findViewById(R.id.button6)
-        val button7: Button = findViewById(R.id.button7)
-        val button8: Button = findViewById(R.id.button8)
-        val button9: Button = findViewById(R.id.button9)
-        val buttonDot: Button = findViewById(R.id.buttonDot)
-
-        //Operation button
-        val buttonEquals: Button = findViewById(R.id.buttonEquals)
-        val buttonDivide: Button = findViewById(R.id.buttonDivide)
-        val buttonMultiply: Button = findViewById(R.id.buttonMultiply)
-        val buttonPlus: Button = findViewById(R.id.buttonPlus)
-        val buttonMinus: Button = findViewById(R.id.buttonMinus)
+//        result = findViewById(R.id.result)
+//        newNumber = findViewById(R.id.newNumber)
+//
+//        //Data input button
+//        val button0: Button = findViewById(R.id.button0)
+//        val button1: Button = findViewById(R.id.button1)
+//        val button2: Button = findViewById(R.id.button2)
+//        val button3: Button = findViewById(R.id.button3)
+//        val button4: Button = findViewById(R.id.button4)
+//        val button5: Button = findViewById(R.id.button5)
+//        val button6: Button = findViewById(R.id.button6)
+//        val button7: Button = findViewById(R.id.button7)
+//        val button8: Button = findViewById(R.id.button8)
+//        val button9: Button = findViewById(R.id.button9)
+//        val buttonDot: Button = findViewById(R.id.buttonDot)
+//
+//        //Operation button
+//        val buttonEquals: Button = findViewById(R.id.buttonEquals)
+//        val buttonDivide: Button = findViewById(R.id.buttonDivide)
+//        val buttonMultiply: Button = findViewById(R.id.buttonMultiply)
+//        val buttonPlus: Button = findViewById(R.id.buttonPlus)
+//        val buttonMinus: Button = findViewById(R.id.buttonMinus)
 
         val listener = View.OnClickListener { v ->
             val b = v as Button
@@ -76,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                 newNumber.setText("")
             }
             pendingOperation = op
-            displayOperation.text = pendingOperation
+            operation.text = pendingOperation
         }
 
         buttonEquals.setOnClickListener(opListener)
@@ -128,7 +126,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         pendingOperation = savedInstanceState.getString(STATE_PENDING_OPERATION).toString()
-        displayOperation.text = pendingOperation
+        operation.text = pendingOperation
     }
 
 
